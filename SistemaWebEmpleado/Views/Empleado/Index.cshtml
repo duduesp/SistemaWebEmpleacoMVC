@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SistemaWebEmpleado.Models.Empleado>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@Html.ActionLink("Nuevo empleado", "Insertar", "Empleado")
+    <Table>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+            <th>@Html.DisplayNameFor(model => model.Apellido)</th>
+            <th>@Html.DisplayNameFor(model => model.Titulo)</th>
+            <th></th>
+
+        </tr>
+
+    @foreach (var item in Model)
+    {
+                <tr>
+                    <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+
+                    <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+                    </td>
+
+                    <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+                    </td>
+
+                    <td>
+@*                @Html.ActionLink("Detalles", "Details", "Opera", new{id=item.OperaId})
+                @Html.ActionLink("Eliminar", "Delete", "Opera", new{id=item.OperaId})*@
+                @Html.ActionLink(item.Titulo, "PorTitulo", "Empleado",new{titulo=item.Titulo})
+
+                    </td>
+                </tr>
+    }
+
+    </Table>
